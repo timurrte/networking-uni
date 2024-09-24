@@ -26,6 +26,7 @@ public class Server {
         }
     }
 
+    // Inner class to handle client connections
     private static class ClientHandler implements Runnable {
         private final Socket socket;
         public ClientHandler(Socket socket) {
@@ -34,7 +35,7 @@ public class Server {
 
         @Override
         public void run() {
-        	String FILENAME = "server_log.txt";
+        	private static String FILENAME = "server_log.txt";
             try (BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                  PrintWriter out = new PrintWriter(socket.getOutputStream(), true)) {
 

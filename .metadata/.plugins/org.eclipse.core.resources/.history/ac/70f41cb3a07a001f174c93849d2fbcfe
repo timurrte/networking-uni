@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class Client {
     private static final String HOST = "localhost";
     private static final int PORT = 8189;
+    private static String currentFile = "default_client_log.txt";
 
     public static void main(String[] args) {
         try (Socket socket = new Socket(HOST, PORT);
@@ -36,6 +37,13 @@ public class Client {
                 // Отримання відповіді від сервера
                 String response = in.readLine();
                 System.out.println(response);
+
+                // Запис у вибраний файл
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(currentFile, true))) {
+                    writer.write(input);
+                    writer.newLine();
+                    writer.flush();
+                }
             }
         } catch (IOException e) {
             System.out.println("Client error: " + e.getMessage());

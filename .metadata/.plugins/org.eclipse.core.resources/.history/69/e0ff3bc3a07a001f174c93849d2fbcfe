@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 
 public class Server {
     private static final int PORT = 8189;
+    private static String FILENAME = "server_log.txt";
 
     public static void main(String[] args) {
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
@@ -26,15 +27,16 @@ public class Server {
         }
     }
 
+    // Inner class to handle client connections
     private static class ClientHandler implements Runnable {
         private final Socket socket;
+
         public ClientHandler(Socket socket) {
             this.socket = socket;
         }
 
         @Override
         public void run() {
-        	String FILENAME = "server_log.txt";
             try (BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                  PrintWriter out = new PrintWriter(socket.getOutputStream(), true)) {
 
