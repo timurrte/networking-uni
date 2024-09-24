@@ -1,8 +1,0 @@
-package lab1_server;
-
-public class FileWriter {
-	BufferedWriter writer;
-	public void FileWriter() {
-		BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
-	}
-}
