@@ -15,25 +15,27 @@ public class Client {
              Scanner scanner = new Scanner(System.in)) {
 
             System.out.println("Connected to the server.");
-            printHelp();
 
             while (true) {
                 String input = scanner.nextLine();
-
-                if ("-q".equalsIgnoreCase(input)) {
-                    System.out.println("Exiting...");
-                    break;
+                
+                if ("-q".matches(input)) {
+                	in.close();
+                	out.close();
+                	scanner.close();
+                	socket.close();
+                	System.out.println("Exiting program.");
+                	break;
                 }
-
-                if ("-h".equalsIgnoreCase(input)) {
-                    printHelp();
-                    continue;
+                
+                if ("-h".matches(input)) {
+                	
+                	printHelp(out);
+                	continue;
                 }
-
-                // Відправка тексту на сервер
+                
                 out.println(input);
-
-                // Отримання відповіді від сервера
+            	
                 String response = in.readLine();
                 System.out.println(response);
             }
@@ -41,11 +43,11 @@ public class Client {
             System.out.println("Client error: " + e.getMessage());
         }
     }
-
-    private static void printHelp() {
-        System.out.println("Available commands:");
-        System.out.println("-h            Show this help message");
-        System.out.println("<filename> -d Select file to save text");
-        System.out.println("-q            Exit");
+    
+    private static void printHelp(PrintWriter out) {
+        System.out.println("Available commands:\n" 
+    + "-h            Show this help message\n" 
+    + "<filename> -d Select file to save text\n" 
+    + "-q            Exit\n");
     }
 }

@@ -27,6 +27,7 @@ public class Server {
     }
 
     private static class ClientHandler implements Runnable {
+
         private final Socket socket;
         public ClientHandler(Socket socket) {
             this.socket = socket;
@@ -36,11 +37,13 @@ public class Server {
         public void run() {
         	String FILENAME = "server_log.txt";
             try (BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                 PrintWriter out = new PrintWriter(socket.getOutputStream(), true)) {
+                PrintWriter out = new PrintWriter(socket.getOutputStream(), true)) {
 
-                // Regular expression to find the pattern "filename -d"
-                Pattern pattern = Pattern.compile("^(.+) +-d$");
-
+                // Regular expressions
+                Pattern pattern_dir = Pattern.compile("^(.+) +-d$");
+                Pattern pattern_q = Pattern.compile("(^|\\s)-q($|\\s)");
+                Pattern pattern_h = Pattern.compile("(^|\\s)-h($|\\s)");
+                
                 String inputLine;
                 while ((inputLine = in.readLine()) != null) {
                     if ("quit".equalsIgnoreCase(inputLine)) {
@@ -49,12 +52,25 @@ public class Server {
                     }
 
                     // Check if the command to change the file is entered
-                    Matcher matcher = pattern.matcher(inputLine);
-                    if (matcher.matches()) {
+                    Matcher matcher_dir = pattern_dir.matcher(inputLine);
+                    if (matcher_dir.matches()) {
                         // Extract the filename from the line
-                        String currentFile = matcher.group(1).trim();
-                        out.println("File changed to: " + currentFile);
+                        String currentFile = matcher_dir.group(1).trim();
+                        out.println("Log file changed to: " + currentFile);
                         FILENAME = currentFile;
+                        continue;
+                    }
+                    
+                    Matcher matcher_q = pattern_q.matcher(inputLine);
+                    if (matcher_q.matches()) {
+                    	
+                        System.out.println("Exiting...");
+                        break;
+                    }
+                    
+                    Matcher matcher_h = pattern_h.matcher(inputLine);
+                    if (matcher_h.matches()) {
+                        printHelp(out);
                         continue;
                     }
 
@@ -76,6 +92,13 @@ public class Server {
                     System.out.println("Error closing socket: " + e.getMessage());
                 }
             }
+        }
+        
+        private static void printHelp(PrintWriter out) {
+            out.println("Available commands:\n" 
+        + "-h            Show this help message\n" 
+        + "<filename> -d Select file to save text\n" 
+        + "-q            Exit\n");
         }
     }
 }
