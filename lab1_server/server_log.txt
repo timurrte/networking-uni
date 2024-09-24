@@ -1,3 +1,0 @@
-clear
-hello
-data_log.log
