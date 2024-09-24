@@ -1,0 +1,10 @@
+package lab1_server;
+
+import java.io.BufferedWriter;
+
+public class Writer {
+	BufferedWriter writer;
+	public void Writer() {
+		this.writer = new BufferedWriter(new FileWriter(fileName));
+	}
+}

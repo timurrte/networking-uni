@@ -1,0 +1,17 @@
+package lab1_client;
+
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.net.Socket;
+
+public class Sender {
+	BufferedWriter writer;
+	Socket socket;
+	public Sender() throws IOException {
+		this.socket = new Socket("localhost", 0);
+	}
+	
+	public void send() {
+		this.socket
+	}
+}

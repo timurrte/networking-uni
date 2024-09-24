@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="WorkbenchPreferenceDialog.dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="625"/>
+		<item key="DIALOG_Y_ORIGIN" value="116"/>
+		<item key="DIALOG_WIDTH" value="855"/>
+		<item key="DIALOG_HEIGHT" value="728"/>
+		<item key="DIALOG_FONT_NAME" value="1|JetBrainsMono Nerd Font|11.0|0|GTK|1|"/>
+	</section>
+	<section name="ImportExportAction">
+		<section name="ImportExportWizard.dialogBounds">
+			<item key="DIALOG_X_ORIGIN" value="535"/>
+			<item key="DIALOG_Y_ORIGIN" value="137"/>
+			<item key="DIALOG_WIDTH" value="788"/>
+			<item key="DIALOG_HEIGHT" value="550"/>
+			<item key="DIALOG_FONT_NAME" value="1|JetBrainsMono Nerd Font|11.0|0|GTK|1|"/>
+		</section>
+	</section>
+	<section name="PropertyDialog.dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="407"/>
+		<item key="DIALOG_Y_ORIGIN" value="126"/>
+		<item key="DIALOG_WIDTH" value="1044"/>
+		<item key="DIALOG_HEIGHT" value="560"/>
+		<item key="DIALOG_FONT_NAME" value="1|JetBrainsMono Nerd Font|11.0|0|GTK|1|"/>
+	</section>
+</section>

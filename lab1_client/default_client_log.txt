@@ -1,0 +1,4 @@
+logfile -d
+file -d
+hello chat
+you are not here

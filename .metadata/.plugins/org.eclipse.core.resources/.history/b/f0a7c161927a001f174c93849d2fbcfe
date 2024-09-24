@@ -1,0 +1,11 @@
+package lab1_client;
+
+import java.net.ServerSocket;
+
+public class Sender {
+	ServerSocket socket;
+	static int port = 1212;
+	public Sender() {
+		this.socket
+	}
+}

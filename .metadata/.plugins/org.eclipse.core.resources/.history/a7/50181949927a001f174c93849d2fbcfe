@@ -1,0 +1,8 @@
+package lab1_client;
+
+public class Sender {
+	ServerSocket socket;
+	public Sender() {
+		
+	}
+}
